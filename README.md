@@ -20,7 +20,7 @@ For running this project, execute the following command:
 * Clone this project with Git
 * Open in some IDE
 * create .env file in the main root of the project and type your postgres database credentials.
-    > - You can use a **docker postgress container** to create a database.
+    > - You can use a **docker postgress container** to create a postgres database.
 * type in the terminal, located on your project folder, type: 
 
 ```bash
