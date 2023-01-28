@@ -1,6 +1,4 @@
-API Rest in Golang | postgres sql
-
-# API Rest full in Golang, GorillaMux, postgres database and gorm ORM.
+## API Rest full in Golang, GorillaMux, postgres database and gorm ORM.
 
 * GET
 * POST
@@ -20,7 +18,7 @@ For running this project, execute the following command:
 * Clone this project with Git
 * Open in some IDE
 * create .env file in the main root of the project and type your postgres database credentials.
-    > - You can use a **docker postgress container** to create a postgres database.
+    * You can use a **docker container with <a href="https://hub.docker.com/_/postgres">docker postgres image</a>** to create a postgres database, laso you can use some online database like firebase.
 * type in the terminal, located on your project folder, type: 
 
 ```bash
