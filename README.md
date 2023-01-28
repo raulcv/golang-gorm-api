@@ -29,4 +29,6 @@ go run main.go
 
 ------------------------------------------------------------------------
 
-Autor: raulcv
+<p align="center">
+	With :heart: by <a href="https://www.raulcv.com" target="_blank">raulcv</a>
+</p>
