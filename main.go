@@ -34,5 +34,13 @@ func main() {
 	// Index route
 	r.HandleFunc("/", routes.HomeHandler)
 
+	s := r.PathPrefix("/api").Subrouter()
+
+	// tasks routes
+	s.HandleFunc("/users", routes.GetUsersHandler).Methods("GET")
+	s.HandleFunc("/users/{id}", routes.GetUserHandler).Methods("GET")
+	s.HandleFunc("/users", routes.PostUserHandler).Methods("POST")
+	s.HandleFunc("/users/{id}", routes.DeleteUserHandler).Methods("DELETE")
+
 	http.ListenAndServe(":"+port, r)
 }
