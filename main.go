@@ -36,11 +36,17 @@ func main() {
 
 	s := r.PathPrefix("/api").Subrouter()
 
-	// tasks routes
+	// Users routes
 	s.HandleFunc("/users", routes.GetUsersHandler).Methods("GET")
 	s.HandleFunc("/users/{id}", routes.GetUserHandler).Methods("GET")
 	s.HandleFunc("/users", routes.PostUserHandler).Methods("POST")
 	s.HandleFunc("/users/{id}", routes.DeleteUserHandler).Methods("DELETE")
+
+	// tasks routes
+	s.HandleFunc("/tasks", routes.GetTasksHandler).Methods("GET")
+	s.HandleFunc("/tasks/{id}", routes.GetTaskHandler).Methods("GET")
+	s.HandleFunc("/tasks", routes.CreateTaskHandler).Methods("POST")
+	s.HandleFunc("/tasks/{id}", routes.DeleteUserHandler).Methods("DELETE")
 
 	http.ListenAndServe(":"+port, r)
 }
