@@ -54,6 +54,36 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&user)
 }
 
+type Iuser struct {
+	given_name string
+}
+
+func PutUserHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	userId, _ := strconv.Atoi(vars["id"])
+
+	var user models.User
+	database.DB.First(&user, "id = ?", userId)
+	if user.ID == 0 {
+		w.WriteHeader(http.StatusNotFound) // 404
+		w.Write([]byte("User not found"))
+		return
+	}
+	var user2 models.User
+	json.NewDecoder(r.Body).Decode(&user2)
+
+	result := database.DB.Model(&user).Updates(user2)
+	err := result.Error
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest) //400
+		w.Write([]byte(err.Error()))
+		return
+	}
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(&user)
+}
+
 func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	userId, _ := strconv.Atoi(vars["id"])

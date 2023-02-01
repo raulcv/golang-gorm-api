@@ -41,6 +41,7 @@ func main() {
 	s.HandleFunc("/users/{id}", routes.GetUserHandler).Methods("GET")
 	s.HandleFunc("/users", routes.PostUserHandler).Methods("POST")
 	s.HandleFunc("/users/{id}", routes.DeleteUserHandler).Methods("DELETE")
+	s.HandleFunc("/users/{id}", routes.PutUserHandler).Methods("PUT")
 
 	// tasks routes
 	s.HandleFunc("/tasks", routes.GetTasksHandler).Methods("GET")
